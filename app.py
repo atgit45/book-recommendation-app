@@ -62,7 +62,7 @@ def make_prediction(bookname):
     res = {mk: (yr, md) for mk, yr, md in zip_longest(listed[0], links, isbn)}
     return res
 
-@st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True,allow_output_mutation=True,hash_funcs={'_json.Scanner': hash})
 def extract_bookinfo(ibsnn):
     base_api_link = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
     user_input = ibsnn
