@@ -62,7 +62,7 @@ def make_prediction(bookname):
     res = {mk: (yr, md) for mk, yr, md in zip_longest(listed[0], links, isbn)}
     return res
 
-@st.cache(suppress_st_warning=True,allow_output_mutation=True,hash_funcs={'_json.Scanner': hash})
+'''@st.cache(suppress_st_warning=True,allow_output_mutation=True,hash_funcs={'_json.Scanner': hash})
 def extract_bookinfo(ibsnn):
     base_api_link = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
     user_input = ibsnn
@@ -74,7 +74,7 @@ def extract_bookinfo(ibsnn):
     volume_info = obj["items"][0] 
     authors = obj["items"][0]["volumeInfo"]["authors"]
     
-    return volume_info,authors
+    return volume_info,authors'''
 
 
 def add_bg_from_url(image_file):
@@ -121,9 +121,9 @@ if submit:
         with col2:
             linker="https://books.google.com/books?vid=ISBN"+str(dic[l_list[i]][1])
             st.subheader(l_list[i],anchor=linker)
-            vi,aut=extract_bookinfo(dic[l_list[i]][1])
+            '''vi,aut=extract_bookinfo(dic[l_list[i]][1])
             genre=vi["volumeInfo"]["categories"]
             st.write("Author(s):", ",".join(aut), "||     Genre:", genre[0] )
-            st.write(textwrap.fill(vi["searchInfo"]["textSnippet"], width=60))
+            st.write(textwrap.fill(vi["searchInfo"]["textSnippet"], width=60))'''
             
         
